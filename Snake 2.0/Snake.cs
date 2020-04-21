@@ -69,12 +69,6 @@ namespace Snake
 			Point head = GetNextPoint();
 			if (head.IsHit(food))
 			{
-				var Eating = new System.Media.SoundPlayer();
-				Eating.SoundLocation = @"C:\Eat.wav";
-				Eating.Play();
-				var Back = new System.Media.SoundPlayer();
-				Back.SoundLocation = @"C:\Background.wav";
-				Back.Play();
 				food.sym = head.sym;
 				pList.Add(food);
 				return true;

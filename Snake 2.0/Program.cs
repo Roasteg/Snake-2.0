@@ -8,15 +8,8 @@ namespace Snake
 {
 	class Program
 	{
-		static void Backgr()
-		{
-			var Back = new System.Media.SoundPlayer();
-			Back.SoundLocation = @"C:\Background.wav";
-			Back.Play();
-		}
 		static void Main(string[] args)
 		{
-
 			Console.SetWindowSize(80, 25);
 			Walls walls = new Walls(80, 25);
 			walls.Draw();
@@ -28,7 +21,7 @@ namespace Snake
 			FoodCreator foodCreator = new FoodCreator(80, 25, '$');
 			Point food = foodCreator.CreateFood();
 			food.Draw();
-
+	
 
 			while (true)
 			{
@@ -58,6 +51,7 @@ namespace Snake
 			Console.ReadLine();
 		}
 
+		
 
 		static void WriteGameOver()
 		{
@@ -68,9 +62,6 @@ namespace Snake
 			WriteText("============================", xOffset, yOffset++);
 			WriteText("И Г Р А    О К О Н Ч Е Н А", xOffset + 1, yOffset++);
 			WriteText("============================", xOffset, yOffset++);
-			var Over = new System.Media.SoundPlayer();
-			Over.SoundLocation = @"C:\Lose.wav";
-			Over.Play();
 			Console.Write("Введите ваше имя: ");
 			string name = Console.ReadLine();
 			System.IO.StreamWriter to_file = new System.IO.StreamWriter("Nimi.txt", true);

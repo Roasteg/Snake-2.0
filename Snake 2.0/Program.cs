@@ -1,13 +1,17 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using WMPLib;
+
 
 namespace Snake
 {
 	class Program
 	{
+		
 		static void Main(string[] args)
 		{
 			Console.SetWindowSize(80, 25);
@@ -21,7 +25,8 @@ namespace Snake
 			FoodCreator foodCreator = new FoodCreator(80, 25, '$');
 			Point food = foodCreator.CreateFood();
 			food.Draw();
-	
+			
+			Params
 
 			while (true)
 			{

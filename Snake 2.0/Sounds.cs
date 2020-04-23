@@ -35,5 +35,11 @@ namespace Snake_2._0
             player.settings.volume = 100;
             player.controls.play();
         }
+        public void PlayLose()
+        {
+            player.URL = pathToMedia + "Lose.wav";
+            player.settings.volume = 100;
+            player.controls.play();
+        }
     }
 }

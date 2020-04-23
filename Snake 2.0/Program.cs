@@ -3,6 +3,7 @@ using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Threading;
 using WMPLib;
 
@@ -25,17 +26,25 @@ namespace Snake
 			FoodCreator foodCreator = new FoodCreator(80, 25, '$');
 			Point food = foodCreator.CreateFood();
 			food.Draw();
-			
-			Params
+
+			Snake_2._0.Params settings = new Snake_2._0.Params();
+			Snake_2._0.Sounds sound = new Snake_2._0.Sounds(settings.GetResourceFolder());
+			sound.Play();
+
+			Snake_2._0.Sounds sound1 = new Snake_2._0.Sounds(settings.GetResourceFolder());
+
+			Snake_2._0.Sounds sound2 = new Snake_2._0.Sounds(settings.GetResourceFolder());
 
 			while (true)
 			{
 				if (walls.IsHit(snake) || snake.IsHitTail())
 				{
+					sound2.PlayLose();
 					break;
 				}
 				if (snake.Eat(food))
 				{
+					sound1.PlayEat();
 					food = foodCreator.CreateFood();
 					food.Draw();
 				}
@@ -56,7 +65,6 @@ namespace Snake
 			Console.ReadLine();
 		}
 
-		
 
 		static void WriteGameOver()
 		{

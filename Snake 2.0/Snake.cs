@@ -9,6 +9,8 @@ namespace Snake
 	class Snake : Figure
 	{
 		Direction direction;
+		
+		public int score;
 
 		public Snake(Point tail, int length, Direction _direction)
 		{
@@ -20,6 +22,7 @@ namespace Snake
 				p.Move(i, direction);
 				pList.Add(p);
 			}
+			score = 0;
 		}
 
 		public void Move()
@@ -71,6 +74,7 @@ namespace Snake
 			{
 				food.sym = head.sym;
 				pList.Add(food);
+				score++;
 				return true;
 			}
 			else

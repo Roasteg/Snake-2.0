@@ -12,7 +12,7 @@ namespace Snake
 {
 	class Program
 	{
-		
+
 		static void Main(string[] args)
 		{
 			Console.SetWindowSize(80, 25);
@@ -60,35 +60,10 @@ namespace Snake
 					snake.HandleKey(key.Key);
 				}
 			}
-
-			WriteGameOver();
+			Snake_2._0.GameOver over = new Snake_2._0.GameOver();
+			over.WriteGameOver(snake.score);
 			Console.ReadLine();
 		}
-
-
-		static void WriteGameOver()
-		{
-			int xOffset = 25;
-			int yOffset = 8;
-			Console.ForegroundColor = ConsoleColor.Red;
-			Console.SetCursorPosition(xOffset, yOffset++);
-			WriteText("============================", xOffset, yOffset++);
-			WriteText("И Г Р А    О К О Н Ч Е Н А", xOffset + 1, yOffset++);
-			WriteText("============================", xOffset, yOffset++);
-			Console.Write("Введите ваше имя: ");
-			string name = Console.ReadLine();
-			System.IO.StreamWriter to_file = new System.IO.StreamWriter("Nimi.txt", true);
-			{
-				to_file.WriteLine(name);
-			}
-			to_file.Close();
-		}
-	
-		static void WriteText(String text, int xOffset, int yOffset)
-		{
-			Console.SetCursorPosition(xOffset, yOffset);
-			Console.WriteLine(text);
-		}
-		
 	}
+
 }

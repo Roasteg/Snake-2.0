@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
+using System.Windows.Forms;
 using WMPLib;
 
 
@@ -29,24 +30,45 @@ namespace Snake
 
 			Snake_2._0.Params settings = new Snake_2._0.Params();
 			Snake_2._0.Sounds sound = new Snake_2._0.Sounds(settings.GetResourceFolder());
-			sound.Play();
 
 			Snake_2._0.Sounds sound1 = new Snake_2._0.Sounds(settings.GetResourceFolder());
 
 			Snake_2._0.Sounds sound2 = new Snake_2._0.Sounds(settings.GetResourceFolder());
+			var enableSound = MessageBox.Show("Включить звук?", "Настройка звука", MessageBoxButtons.YesNo);
+			if (enableSound == DialogResult.Yes)
+			{
+				sound.Play();
+			}
 
 			while (true)
 			{
 				if (walls.IsHit(snake) || snake.IsHitTail())
 				{
-					sound2.PlayLose();
-					break;
+					if (enableSound == DialogResult.No)
+					{
+						break;
+					}
+					else if (enableSound == DialogResult.Yes)
+					{
+						sound.Stop();
+						sound2.PlayLose();
+						break;
+					}
+
 				}
 				if (snake.Eat(food))
 				{
-					sound1.PlayEat();
-					food = foodCreator.CreateFood();
-					food.Draw();
+					if (enableSound == DialogResult.Yes)
+					{
+						sound1.PlayEat();
+						food = foodCreator.CreateFood();
+						food.Draw();
+					}
+					else if (enableSound == DialogResult.No)
+					{
+						food = foodCreator.CreateFood();
+						food.Draw();
+					}
 				}
 				else
 				{

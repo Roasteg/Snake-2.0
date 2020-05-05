@@ -17,9 +17,9 @@ namespace Snake_2._0
 			WriteText("============================", xOffset, yOffset++);
 			WriteText("И Г Р А    О К О Н Ч Е Н А", xOffset + 1, yOffset++);
 			WriteText("============================", xOffset, yOffset++);
+			Console.WriteLine("Ваш счёт - " + score);
 			Console.Write("Введите ваше имя: ");
 			string name = Console.ReadLine();
-			Console.WriteLine(score);
 			using (var file = new System.IO.StreamWriter("result.txt", true))
 			{
 				file.WriteLine("Name - " + name + "& Score - " + score);

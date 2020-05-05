@@ -41,5 +41,16 @@ namespace Snake_2._0
             player.settings.volume = 100;
             player.controls.play();
         }
+        public void Stop()
+        {
+            player.URL = pathToMedia + "Background.wav";
+            player.controls.stop();
+        }
+        public void Stop(string songName)
+        {
+            player.URL = pathToMedia + songName + ".wav";
+            player.settings.volume = 0;
+        }
+
     }
 }

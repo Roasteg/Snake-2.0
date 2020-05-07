@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
+using System.Reflection;
 
 namespace Snake_2._0
 {
@@ -22,8 +24,16 @@ namespace Snake_2._0
 			string name = Console.ReadLine();
 			using (var file = new System.IO.StreamWriter("result.txt", true))
 			{
-				file.WriteLine("Name - " + name + "& Score - " + score);
+				file.WriteLine("Name - " + name + " & Score - " + score);
 				file.Close();
+			}
+			Console.WriteLine("Для перезапуска нажмите R или нажмите Enter что бы выйти");
+			ConsoleKeyInfo but = Console.ReadKey();
+			if (but.Key == ConsoleKey.R)
+			{
+				var fileName = Assembly.GetExecutingAssembly().Location;
+				System.Diagnostics.Process.Start(fileName);
+				Environment.Exit(0);
 			}
 		}
 		static void WriteText(String text, int xOffset, int yOffset)

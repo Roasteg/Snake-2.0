@@ -24,7 +24,7 @@ namespace Snake
 			}
 			score = 0;
 		}
-
+		
 		public void Move()
 		{
 			Point tail = pList.First();
